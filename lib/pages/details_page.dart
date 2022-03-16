@@ -28,7 +28,7 @@ class DetailsPage extends StatelessWidget {
                       API.REQUEST_IMG(movie.posterPath),
                       loadingBuilder: (_, child, progress) {
                         if (progress == null) return child;
-                        return CircularProgressIndicator.adaptive();
+                        return const CircularProgressIndicator.adaptive();
                       },
                     ),
                   ),

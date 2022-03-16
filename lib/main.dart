@@ -5,6 +5,7 @@ void main() {
   runApp(const MyApp());
 }
 
+// comentario teste pra commit
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
