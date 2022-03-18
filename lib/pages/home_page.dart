@@ -25,6 +25,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    List<bool> isSelection = List.generate(2, (_) => false);
+
     return Scaffold(
         body: Padding(
       padding: const EdgeInsets.all(28),
@@ -41,11 +43,37 @@ class _HomePageState extends State<HomePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Movies',
-                          style: Theme.of(context).textTheme.headline3,
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Filmes',
+                              style: Theme.of(context).textTheme.headline3,
+                            ),
+                            ToggleButtons(
+                              children: const [
+                                Icon(Icons.list),
+                                Icon(Icons.grid_on)
+                              ],
+                              isSelected: isSelection,
+                              onPressed: (int index) {
+                                setState(() {
+                                  isSelection[index] = !isSelection[index];
+                                });
+                              },
+                              borderRadius: BorderRadius.circular(15),
+                              borderWidth: 5,
+                            ),
+                          ],
                         ),
-                        TextField(onChanged: _controller.onChanged),
+                        TextField(
+                          onChanged: _controller.onChanged,
+                          decoration: const InputDecoration(
+                            label: Text('Pesquisar'),
+                            icon: Icon(Icons.search),
+                          ),
+                        ),
                       ],
                     ),
                   );
